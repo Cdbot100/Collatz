@@ -1,0 +1,36 @@
+[sgordon@gpu Collatz]$ /opt/cuda-8.0/bin/nvcc TwoLoopsMaster.cu -o TwoLoops
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+[sgordon@gpu Collatz]$ time -p ./TwoLoops
+        elapsed wall clock time: 65s         // Cuda Bound Global Size = (2^30) (1X1024)
+real 64.60
+user 40.72
+sys 16.04
+[sgordon@gpu Collatz]$ /opt/cuda-8.0/bin/nvcc TwoLoopsMaster.cu -o TwoLoops
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+[sgordon@gpu Collatz]$ time -p ./TwoLoops
+        elapsed wall clock time: 114s         //Cuda Bound Shared Size = (2^30)  (1X1024)
+real 113.85             
+user 79.18
+sys 27.14
+[sgordon@gpu Collatz]$ nano VerifyConjecture.txt
+[sgordon@gpu Collatz]$ /opt/cuda-8.0/bin/nvcc TwoLoopsMaster.cu -o TwoLoops
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+[sgordon@gpu Collatz]$ time -p ./TwoLoops
+        elapsed wall clock time: 811s         //CPU Bound Size = (2^30)(1X1024)
+real 811.62
+user 799.75
+sys 4.20
+[sgordon@gpu Collatz]$ /opt/cuda-8.0/bin/nvcc TwoLoopsMaster.cu -o TwoLoops
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+[sgordon@gpu Collatz]$ time -p ./TwoLoops
+        elapsed wall clock time: 74s          //CUDA Modified (2^30) (32X32)
+real 85.44
+user 54.11
+sys 22.96
+[sgordon@gpu Collatz]$ /opt/cuda-8.0/bin/nvcc TwoLoopsMaster.cu -o TwoLoops
+nvcc warning : The 'compute_20', 'sm_20', and 'sm_21' architectures are deprecated, and may be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+[sgordon@gpu Collatz]$ time -p ./TwoLoops
+        elapsed wall clock time: 45s          //CUDA Bound (2^30) (32x32)
+real 55.03
+user 34.93
+sys 12.10
